@@ -1,0 +1,22 @@
+INCLUDES=-I$(top_srcdir)/include -I$(top_srcdir)/src/zcas -I$(top_srcdir)/src/common
+
+bin_PROGRAMS = zcas testencoding example article
+
+zcas_CFLAGS=-DOS_LINUX
+zcas_LDFLAGS=-Wl,-rpath=./lib/x64:../lib/x64:../../lib/x64
+zcas_LDADD=-L$(top_srcdir)/src/zcas/ -lzcas
+zcas_SOURCES =zcas_test.c
+
+example_CFLAGS=-DOS_LINUX
+example_LDFLAGS=-Wl,-rpath=./lib/x64:../lib/x64:../../lib/x64
+example_LDADD=-L$(top_srcdir)/src/zcas -lzcas
+example_SOURCES=zcas_test.c
+
+testencoding_CFLAGS=-DOS_LINUX
+testencoding_LDADD=-L$(top_srcdir)/src/zcas/ -lzcas
+testencoding_SOURCES=test_encoding.c
+
+article_CFLAGS=-DOS_LINUX
+article_LDFLAGS=-Wl,-rpath=./lib/x64:../lib/x64:../../lib/x64
+article_LDADD=-L$(top_srcdir)/src/zcas/ -lzcas
+article_SOURCES =test_article.c
